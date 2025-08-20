@@ -29,7 +29,7 @@
 
 
   --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-arabic: 'Amiri Quran', serif; /* Updated to Amiri Quran for better Quranic text feel */
+  --font-arabic: 'Amiri Quran', serif; /* Updated to Amiri Quran */
   --font-light: 300;
   --font-regular: 400;
   --font-medium: 500;
@@ -185,22 +185,22 @@ body {
 
 /* ===== PROGRESS BAR ===== */
 .progress-bar {
-  height: 3px; /* Slightly thicker for better visibility */
+  height: 3px; /* Slightly thicker */
   background: var(--accent);
   width: 0%;
   transition: width 0.1s linear; /* Keep linear for progress */
   border-radius: 2px; /* Slightly more rounded */
-  position: sticky; /* Make it stick to the top */
-  top: 0; /* Stick to the very top */
+  position: sticky; /* Make it stick */
+  top: 0; /* Stick to the top */
   z-index: 100; /* Ensure it's above content */
-  box-shadow: 0 1px 2px var(--shadow); /* Subtle shadow for depth */
+  box-shadow: 0 1px 2px var(--shadow); /* Subtle shadow */
 }
 
 /* ===== CONTENT ===== */
 .content {
   display: flex;
   flex-direction: column;
-  gap: 1.8rem; /* Increased gap for better spacing */
+  gap: 1.8rem; /* Increased gap */
 }
 
 .card {
@@ -248,29 +248,48 @@ body {
   border-radius: 50%;
 }
 
-/* Arabic Text */
-.arabic {
-  font-family: var(--font-arabic);
-  font-size: 1.7rem; /* Larger font size */
-  text-align: center;
-  direction: rtl;
-  margin: 1.5rem 0; /* Increased margin */
-  color: #34c759; /* Keep accent color consistent */
-  line-height: 2.5; /* Increased line height */
-  letter-spacing: 0.5px; /* Increased letter spacing */
-  font-weight: 700;
-  white-space: pre-line; /* Honor newlines in HTML */
+/* --- BEAUTIFIED ARABIC TEXT BLOCK --- */
+/* New class for structured Arabic/Translation display */
+.arabic-text-block {
+  margin: 1.2rem 0;
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  background-color: var(--bg); /* Subtle background */
+  border-left: 3px solid var(--accent); /* Accent color bar */
+  box-shadow: inset 0 1px 2px var(--shadow); /* Subtle inner shadow */
+  transition: var(--transition);
 }
 
-.translation {
-  font-size: 1rem; /* Slightly larger */
+.arabic-text-block:hover {
+    box-shadow: inset 0 1px 3px var(--shadow-strong);
+}
+
+.arabic-text-block .arabic {
+  font-family: var(--font-arabic);
+  font-size: 1.6rem; /* Slightly larger */
+  text-align: center;
+  direction: rtl;
+  margin: 0.8rem 0; /* Reduced margin */
+  color: #34c759; /* Keep accent color */
+  line-height: 2.4; /* Adjusted line height */
+  letter-spacing: 0.4px; /* Adjusted letter spacing */
+  font-weight: 700;
+  white-space: pre-line; /* Honor newlines */
+}
+
+.arabic-text-block .translation {
+  font-size: 0.98rem; /* Slightly larger */
   font-style: italic;
   color: var(--text-light);
   text-align: center;
-  margin: 0.5rem 0; /* Increased margin */
+  margin: 0.6rem 0 0 0; /* Adjusted margin */
+  display: block; /* Ensure it's a block element */
 }
 
-/* English Content */
+/* --- END BEAUTIFIED ARABIC TEXT BLOCK --- */
+
+
+/* English Content (General Paragraphs and Lists) */
 .card p,
 .card ul {
   font-size: 1.05rem; /* Slightly larger */
@@ -411,8 +430,11 @@ body {
     font-size: 1.4rem; /* Adjusted size */
   }
 
-  .arabic {
-    font-size: 1.5rem; /* Adjusted size */
+  .arabic-text-block .arabic {
+    font-size: 1.4rem; /* Adjust for smaller screens */
+  }
+  .arabic-text-block .translation {
+    font-size: 0.9rem; /* Adjust for smaller screens */
   }
 
   .content {
