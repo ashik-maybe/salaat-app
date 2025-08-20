@@ -17,6 +17,7 @@
   --shadow-strong: rgba(0, 0, 0, 0.1);
   --radius: 16px;
   --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --button-transition: all 0.2s cubic-bezier(0.4, 0.03, 0.03, 1); /* Snappier button feel */
 
   /* iOS-like Theme Toggle Colors */
   --toggle-bg: #f1f1f1;
@@ -28,14 +29,14 @@
 
 
   --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-arabic: 'Amiri', serif;
+  --font-arabic: 'Amiri Quran', serif; /* Updated to Amiri Quran for better Quranic text feel */
   --font-light: 300;
   --font-regular: 400;
   --font-medium: 500;
   --font-semi: 600;
 
   /* Icon transition */
-  --icon-transition: transform 0.3s ease, opacity 0.2s ease;
+  --icon-transition: transform 0.3s cubic-bezier(0.4, 0.03, 0.03, 1), opacity 0.2s ease; /* iOS easing */
 }
 
 /* Dark Theme Colors */
@@ -54,7 +55,6 @@
   --toggle-border: #545456;
   --toggle-thumb: #8e8e93;
   --toggle-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-  /* --toggle-icon-color is overridden for dark mode below */
 }
 
 body {
@@ -135,7 +135,7 @@ body {
   top: 50%;
   left: 2px;
   transform: translateY(-50%);
-  transition: transform 0.3s cubic-bezier(0.4, 0.03, 0, 1); /* iOS-like easing */
+  transition: transform 0.3s cubic-bezier(0.4, 0.03, 0.03, 1); /* iOS-like easing */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -185,29 +185,33 @@ body {
 
 /* ===== PROGRESS BAR ===== */
 .progress-bar {
-  height: 2px;
+  height: 3px; /* Slightly thicker for better visibility */
   background: var(--accent);
   width: 0%;
   transition: width 0.1s linear; /* Keep linear for progress */
-  border-radius: 1px;
+  border-radius: 2px; /* Slightly more rounded */
+  position: sticky; /* Make it stick to the top */
+  top: 0; /* Stick to the very top */
+  z-index: 100; /* Ensure it's above content */
+  box-shadow: 0 1px 2px var(--shadow); /* Subtle shadow for depth */
 }
 
 /* ===== CONTENT ===== */
 .content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.8rem; /* Increased gap for better spacing */
 }
 
 .card {
   background: var(--card);
   border-radius: var(--radius);
-  padding: 1.8rem;
+  padding: 2rem; /* Increased padding */
   box-shadow: 0 8px 24px var(--shadow);
   border: 1px solid var(--border);
   opacity: 0;
   transform: translateY(20px);
-  transition: transform 0.6s ease, box-shadow 0.4s ease, opacity 0.6s ease; /* Added opacity transition */
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, opacity 0.6s ease; /* Apple-like easing */
   will-change: transform;
   overflow: hidden;
 }
@@ -224,12 +228,12 @@ body {
 
 /* Card Title */
 .card h2 {
-  font-size: 1.45rem;
+  font-size: 1.5rem; /* Slightly larger title */
   font-weight: var(--font-semi);
   color: var(--accent);
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.2rem; /* Increased margin */
   position: relative;
-  padding-left: 1rem;
+  padding-left: 1.2rem; /* Adjusted for larger dot */
 }
 
 .card h2::before {
@@ -238,8 +242,8 @@ body {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 5px;
-  height: 5px;
+  width: 6px; /* Larger dot */
+  height: 6px;
   background: var(--accent);
   border-radius: 50%;
 }
@@ -247,40 +251,42 @@ body {
 /* Arabic Text */
 .arabic {
   font-family: var(--font-arabic);
-  font-size: 1.55rem;
+  font-size: 1.7rem; /* Larger font size */
   text-align: center;
   direction: rtl;
-  margin: 1.3rem 0;
+  margin: 1.5rem 0; /* Increased margin */
   color: #34c759; /* Keep accent color consistent */
-  line-height: 2.3;
-  letter-spacing: 0.3px;
+  line-height: 2.5; /* Increased line height */
+  letter-spacing: 0.5px; /* Increased letter spacing */
   font-weight: 700;
+  white-space: pre-line; /* Honor newlines in HTML */
 }
 
 .translation {
-  font-size: 0.95rem;
+  font-size: 1rem; /* Slightly larger */
   font-style: italic;
   color: var(--text-light);
   text-align: center;
-  margin: 0.3rem 0;
+  margin: 0.5rem 0; /* Increased margin */
 }
 
 /* English Content */
 .card p,
 .card ul {
-  font-size: 1.02rem;
+  font-size: 1.05rem; /* Slightly larger */
   color: var(--text);
-  margin: 0.9rem 0;
+  margin: 1rem 0; /* Increased margin */
   font-weight: var(--font-regular);
+  line-height: 1.7; /* Slightly increased line height */
 }
 
 .card ul {
-  padding-left: 1.5rem;
-  margin: 1rem 0;
+  padding-left: 1.8rem; /* Increased padding */
+  margin: 1.2rem 0; /* Increased margin */
 }
 
 .card ul li {
-  margin: 0.5rem 0;
+  margin: 0.6rem 0; /* Increased margin */
   position: relative;
 }
 
@@ -288,19 +294,21 @@ body {
   content: '•';
   color: var(--accent);
   position: absolute;
-  left: -1rem;
+  left: -1.2rem; /* Adjusted for larger padding */
+  font-size: 1.2rem; /* Larger bullet point */
 }
 
 /* Warning Box */
 .warning {
   background: #fff4e5; /* Light theme warning */
-  border-left: 3px solid #ff9500;
-  padding: 0.9rem 1rem;
-  border-radius: 10px;
-  margin: 1.3rem 0;
-  font-size: 0.95rem;
+  border-left: 4px solid #ff9500; /* Slightly thicker border */
+  padding: 1.2rem 1.3rem; /* Increased padding */
+  border-radius: 12px; /* More rounded corners */
+  margin: 1.5rem 0; /* Increased margin */
+  font-size: 1rem; /* Slightly larger */
   color: #d47c00;
   transition: var(--transition); /* Smooth color transition */
+  box-shadow: 0 2px 6px var(--shadow); /* Subtle shadow */
 }
 
 [data-theme="dark"] .warning {
@@ -314,29 +322,40 @@ body {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 40px;
-  height: 40px;
+  width: 44px; /* Slightly larger */
+  height: 44px; /* Slightly larger */
   background: var(--card);
   color: var(--accent);
   border: 1px solid var(--border);
   border-radius: 50%;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* Remove font-size as it's not text anymore */
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
   cursor: pointer;
   box-shadow: 0 4px 12px var(--shadow);
-  transition: all 0.3s ease; /* Slightly faster for button feedback */
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); /* Apple-like easing */
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 0; /* Ensure no padding interferes */
+}
+
+/* Style the Font Awesome icon inside the button */
+.back-to-top i {
+  font-size: 20px; /* Size the icon */
+  transition: var(--icon-transition); /* Smooth icon transition */
 }
 
 .back-to-top:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px var(--shadow-strong);
+}
+
+.back-to-top:active {
+    transform: translateY(0) scale(0.96); /* Subtle press effect */
 }
 
 .back-to-top.visible {
@@ -348,12 +367,12 @@ body {
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
-  padding: 2rem 1.5rem 3rem;
+  padding: 2.5rem 1.8rem 3.5rem; /* Increased padding */
   color: var(--text-light);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1rem; /* Slightly larger */
+  line-height: 1.7; /* Increased line height */
   border-top: 1px solid var(--border);
-  margin-top: 2rem;
+  margin-top: 2.5rem; /* Increased margin */
   transition: var(--transition); /* Smooth color transition */
 }
 
@@ -377,35 +396,41 @@ body {
   .header-content {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 1.2rem; /* Increased gap */
   }
 
   .header h1 {
-    font-size: 2.2rem;
+    font-size: 2.3rem; /* Adjusted size */
   }
 
   .card {
-    padding: 1.5rem;
+    padding: 1.7rem; /* Adjusted padding */
+  }
+
+  .card h2 {
+    font-size: 1.4rem; /* Adjusted size */
   }
 
   .arabic {
-    font-size: 1.4rem;
+    font-size: 1.5rem; /* Adjusted size */
   }
 
   .content {
-    gap: 1.3rem;
+    gap: 1.5rem; /* Adjusted gap */
   }
 
   .footer {
-    padding: 1.8rem 1rem 2.5rem;
-    font-size: 0.9rem;
+    padding: 2rem 1.2rem 3rem; /* Adjusted padding */
+    font-size: 0.95rem; /* Adjusted size */
   }
 
   .back-to-top {
     right: 16px;
     bottom: 16px;
-    width: 36px;
-    height: 36px;
-    font-size: 1.1rem;
+    width: 40px; /* Adjusted size */
+    height: 40px; /* Adjusted size */
+  }
+  .back-to-top i {
+    font-size: 18px; /* Adjusted icon size */
   }
 }

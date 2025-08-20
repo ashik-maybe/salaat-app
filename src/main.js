@@ -1,4 +1,5 @@
 // Full data from islamqa.info — every detail included
+// Added \n for Arabic texts
 const prayerData = [
   {
     title: "Facing the Qiblah",
@@ -43,8 +44,8 @@ const prayerData = [
   {
     title: "Du'a al-Istiftah",
     content: `
-      <p>Begin with a supplication such as: <span class="arabic">سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ...</span><br>
-      <span class="translation">"Glory and praise be to You, O Allah..."</span></p>
+      <p>Begin with a supplication such as: <span class="arabic">سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالى جَدُّكَ وَلَا إِلَهَ غَيْرُكَ</span><br>
+      <span class="translation">"Glory and praise be to You, O Allah, and blessed is Your name, and exalted is Your majesty, and there is none worthy of worship except You."</span></p>
     `
   },
   {
@@ -76,7 +77,7 @@ const prayerData = [
     content: `
       <p>After recitation, pause briefly, raise hands, say “Allahu Akbar,” then bow deeply.</p>
       <p>Hands on knees, fingers spread. Back level, head aligned with spine.</p>
-      <p>Say: <span class="arabic">سُبْحَانَ رَبِّيَ الْعَظِيمِ</span> (3+ times).</p>
+      <p>Say: <span class="arabic">سُبْحَانَ رَبِّيَ الْعَظِيمَ وَبِحَمْدِهِ</span> (3+ times).</p>
       <p>Duration should be approximately equal to standing after ruku’.</p>
     `
   },
@@ -96,7 +97,7 @@ const prayerData = [
       <p>Forehead and nose, palms, knees, and toes firmly on the ground.</p>
       <p>Fingers together, pointing qiblah. Toes upright.</p>
       <p>Forearms off the ground — do not spread like a dog.</p>
-      <p>Say: <span class="arabic">سُبْحَانَ رَبِّيَ الْأَعْلَى</span> (3+ times).</p>
+      <p>Say: <span class="arabic">سُبْحَانَ رَبِّيَ الْأَعْلَى وَبِحَمْدِهِ</span> (3+ times).</p>
       <p>Duration ~ equal to ruku’.</p>
     `
   },
@@ -128,8 +129,8 @@ const prayerData = [
     content: `
       <p>Sit in iftirash: left leg under, right foot up, toes to qiblah.</p>
       <p>Right hand: index finger pointing qiblah, moving with du’a.</p>
-      <p>Recite silently: <span class="arabic">التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ...</span></p>
-      <p>Then send salawat: <span class="arabic">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ...</span></p>
+      <p>Recite silently: <span class="arabic">التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ\nالسَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ\nالسَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</span></p>
+      <p>Then send salawat: <span class="arabic">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ\nكَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ\nإِنَّكَ حَمِيدٌ مَجِيدٌ\nاللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ\nكَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ\nإِنَّكَ حَمِيدٌ مَجِيدٌ</span></p>
     `
   },
   {
@@ -144,7 +145,7 @@ const prayerData = [
     content: `
       <p>Sit mutawarikan: left foot under right leg.</p>
       <p>Send salawat on the Prophet (ﷺ).</p>
-      <p>Seek refuge: <span class="arabic">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ...</span></p>
+      <p>Seek refuge: <span class="arabic">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ وَمِنْ عَذَابِ الْقَبْرِ\nوَمِنْ فِتْنَةِ النَّارِ وَمِنْ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ\nوَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ</span></p>
       <p>Then make personal du’a before salam.</p>
     `
   },
@@ -197,16 +198,7 @@ const body = document.body;
 // --- Theme Toggle Logic ---
 const setTheme = (theme) => {
   body.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme); // Save preference
-
-  // Update icon based on theme (though CSS handles the animation)
-  // This is more for initial load sync
-  const icon = themeToggle.querySelector('i');
-  if (theme === 'dark') {
-      // Icon animation handled by CSS
-  } else {
-      // Icon animation handled by CSS
-  }
+  localStorage.setItem('theme', theme);
 };
 
 // Check for saved theme preference or respect OS setting as default
@@ -248,17 +240,35 @@ const observer = new IntersectionObserver((entries) => {
 cards.forEach(card => observer.observe(card));
 
 // --- Progress Bar & Back to Top ---
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.body.scrollHeight - window.innerHeight;
-  const progress = (scrollTop / docHeight) * 100;
-  progressBar.style.width = `${Math.min(progress, 100)}%`;
+const updateProgressBar = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const progress = (docHeight > 0) ? (scrollTop / docHeight) * 100 : 0; // Avoid division by zero
+    progressBar.style.width = `${Math.min(progress, 100)}%`;
+};
 
-  // Toggle visibility class for smoother transition
-  backToTop.classList.toggle('visible', scrollTop > 400);
+const toggleBackToTop = () => {
+    const scrollTop = window.scrollY;
+    backToTop.classList.toggle('visible', scrollTop > 400);
+};
+
+window.addEventListener('scroll', () => {
+    updateProgressBar();
+    toggleBackToTop();
 });
 
 // Back to Top
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// --- Initial Load Polish ---
+// Ensure smooth initial load and correct state
+document.addEventListener('DOMContentLoaded', () => {
+    // Re-check theme in case of race conditions
+    const finalTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(finalTheme);
+
+    // Initial check for back-to-top visibility
+    toggleBackToTop();
 });
