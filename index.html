@@ -8,16 +8,28 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,300&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
 
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- Styles -->
   <link rel="stylesheet" href="src/style.css"/>
 </head>
-<body>
+<body data-theme="light"> <!-- Set default theme to light -->
   <div class="container">
 
     <!-- Header -->
     <header class="header">
-      <h1>Salaat</h1>
-      <p>As the Prophet Muhammad (ﷺ) Prayed</p>
+      <div class="header-content">
+        <div>
+          <h1>Salaat</h1>
+          <p>As the Prophet Muhammad (ﷺ) Prayed</p>
+        </div>
+        <!-- Theme Toggle Button with BOTH icons -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <i class="fas fa-sun"></i> <!-- Sun icon for light mode -->
+          <i class="fas fa-moon"></i> <!-- Moon icon for dark mode -->
+        </button>
+      </div>
     </header>
 
     <!-- Progress Bar -->
@@ -27,7 +39,7 @@
     <main id="content" class="content"></main>
 
     <!-- Back to Top -->
-    <button id="back-to-top" class="back-to-top hidden">↑</button>
+    <button id="back-to-top" class="back-to-top hidden" aria-label="Back to top">↑</button>
 
     <!-- Footer -->
     <footer class="footer">

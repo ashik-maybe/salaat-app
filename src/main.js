@@ -191,8 +191,40 @@ const prayerData = [
 const content = document.getElementById('content');
 const progressBar = document.getElementById('progress-bar');
 const backToTop = document.getElementById('back-to-top');
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
 
-// Build Cards
+// --- Theme Toggle Logic ---
+const setTheme = (theme) => {
+  body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme); // Save preference
+
+  // Update icon based on theme (though CSS handles the animation)
+  // This is more for initial load sync
+  const icon = themeToggle.querySelector('i');
+  if (theme === 'dark') {
+      // Icon animation handled by CSS
+  } else {
+      // Icon animation handled by CSS
+  }
+};
+
+// Check for saved theme preference or respect OS setting as default
+const savedTheme = localStorage.getItem('theme');
+const osPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+// Default to light mode if nothing is saved, otherwise use saved/os pref
+const initialTheme = savedTheme ? savedTheme : (osPrefersDark ? 'dark' : 'light');
+setTheme(initialTheme);
+
+// Add click event listener to the toggle button
+themeToggle.addEventListener('click', () => {
+  const currentTheme = body.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  setTheme(newTheme);
+});
+
+// --- Content Building ---
 prayerData.forEach((item, index) => {
   const card = document.createElement('div');
   card.className = 'card';
@@ -203,7 +235,7 @@ prayerData.forEach((item, index) => {
   content.appendChild(card);
 });
 
-// Show cards on scroll
+// --- Scroll Animations ---
 const cards = document.querySelectorAll('.card');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -215,28 +247,18 @@ const observer = new IntersectionObserver((entries) => {
 
 cards.forEach(card => observer.observe(card));
 
-// Progress Bar
+// --- Progress Bar & Back to Top ---
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
   const docHeight = document.body.scrollHeight - window.innerHeight;
   const progress = (scrollTop / docHeight) * 100;
   progressBar.style.width = `${Math.min(progress, 100)}%`;
 
-  backToTop.classList.toggle('hidden', scrollTop < 400);
+  // Toggle visibility class for smoother transition
+  backToTop.classList.toggle('visible', scrollTop > 400);
 });
 
 // Back to Top
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Auto Dark Mode from OS
-if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  document.body.setAttribute('data-theme', 'dark');
-} else {
-  document.body.setAttribute('data-theme', 'light');
-}
-
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-  document.body.setAttribute('data-theme', e.matches ? 'dark' : 'light');
 });
