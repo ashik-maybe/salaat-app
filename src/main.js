@@ -1,10 +1,10 @@
-// Full data from the PDF — every detail included
+// Full data from islamqa.info — every detail included
 const prayerData = [
   {
     title: "Facing the Qiblah",
     content: `
-      <p>When you stand up to pray, face the direction of the Ka'bah, whether in obligatory or supererogatory prayers. This is one of the pillars of prayer — without it, prayer is invalid.</p>
-      <p>Exceptions: during warfare (salat al-khawf), severe illness, or travel (ship, airplane) when time is limited. For nafl prayers while riding, it is recommended to face the qiblah at the beginning.</p>
+      <p>When you stand up to pray, face the direction of the Ka'bah wherever you are, in both fard and nafl prayers. This is one of the pillars of prayer — without it, prayer is invalid.</p>
+      <p>Exceptions: during warfare (salat al-khawf), heavy fighting, illness, or travel on a ship, car, or plane when time may elapse. For nafl prayers while riding, it is mustahabb to face the qiblah at the beginning.</p>
       <p>If you cannot see the Ka'bah, face its direction. If you made your best effort and were mistaken, your prayer is valid.</p>
       <p>If someone corrects you during prayer, turn immediately — your prayer remains valid.</p>
     `
@@ -22,7 +22,7 @@ const prayerData = [
     title: "Intention (Niyyah)",
     content: `
       <p>The intention must be in the heart — specify the prayer (e.g., Fajr, Sunnah).</p>
-      <p>Verbal intention is an innovation (bid’ah) and was not practiced by the Prophet (peace and blessings be upon him) or his Companions.</p>
+      <p>Verbal intention is an innovation (bid’ah) and was not practiced by the Prophet (ﷺ) or his Companions.</p>
     `
   },
   {
@@ -143,7 +143,7 @@ const prayerData = [
     title: "Final Tashahhud",
     content: `
       <p>Sit mutawarikan: left foot under right leg.</p>
-      <p>Send salawat on the Prophet (peace and blessings be upon him).</p>
+      <p>Send salawat on the Prophet (ﷺ).</p>
       <p>Seek refuge: <span class="arabic">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ...</span></p>
       <p>Then make personal du’a before salam.</p>
     `
@@ -178,7 +178,7 @@ const prayerData = [
     content: `
       <p>Look at your place of prostration. Do not look up, left, or right.</p>
       <p>Avoid distractions: food, need to relieve yourself.</p>
-      <p>Humility is the essence of prayer. The Prophet (peace and blessings be upon him) said: “Pray as you have seen me pray.”</p>
+      <p>Humility is the essence of prayer. The Prophet (ﷺ) said: “Pray as you have seen me pray.”</p>
       <p>Prayer prevents sin. — Quran 29:45</p>
       <div class="warning">
         <strong>Note:</strong> Presence of heart and humility are the true purpose of prayer.
@@ -230,14 +230,13 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Optional: Dark Mode (Auto from OS)
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+// Auto Dark Mode from OS
+if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
   document.body.setAttribute('data-theme', 'dark');
 } else {
   document.body.setAttribute('data-theme', 'light');
 }
 
-// Listen for OS theme change
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
   document.body.setAttribute('data-theme', e.matches ? 'dark' : 'light');
 });
